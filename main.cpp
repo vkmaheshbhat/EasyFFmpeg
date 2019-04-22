@@ -29,7 +29,7 @@ int main()
 {
     std::cout << "Hello World!" << std::endl;
     av_register_all();
-    std::string fName = "/home/mahesh/workspace/Data/vids/vid.mp4";
+    std::string fName = "Data/vids/vid.mp4";
     EasyFFmpeg::VideoDecoder * decoder = new EasyFFmpeg::VideoDecoder(fName, 640, 480);
     //EasyFFmpeg::VideoInfo info = decoder->getVideoInfo();
     std::vector<uint8_t> frame_vec;
@@ -38,8 +38,8 @@ int main()
     int i = 0;
     while( (ret == 0) && (i < 150) )
     {
-        char fName[] = "/home/mahesh/workspace/Data/frame_00000000.png";
-        std::sprintf(fName, "/home/mahesh/workspace/Data/frame_%08d.png", i);
+        char fName[] = "Data/frame_00000000.png";
+        std::sprintf(fName, "Data/frame_%08d.png", i);
         stbi_write_png(fName, 640, 480, 3, frame_vec.data(), 640*3);
         ret = decoder->getNextFrame( frame_vec );
         i++;
